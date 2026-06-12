@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /aviso-privacidad.html
+
+Sitemap: https://www.pcyasociados.com.mx/sitemap.xml
