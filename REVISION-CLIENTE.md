@@ -78,6 +78,7 @@ Catálogo de productos con filtros. Los productos se editan en `js/productos.js`
 **Qué se puede cambiar aquí:** productos y precios reales (los actuales son de ejemplo), fotos reales en lugar de íconos, categorías de los filtros, si se muestran o no los precios, texto del botón.
 
 ---
+INSTRUCCIONES IMPORTANTES PARA PODER MOSTRAR EL PROYECTO
 
 ### 5. SECCIÓN PROMOCIONES (`#promociones`)
 
