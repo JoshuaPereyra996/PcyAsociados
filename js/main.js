@@ -6,17 +6,23 @@
 const WHATSAPP = "525574073349";
 
 const NOMBRES_CATEGORIA = {
+  computadoras: "Computadoras",
   laptops: "Laptops",
-  escritorio: "Equipos de escritorio / CPU",
+  "all-in-one": "All in One",
   monitores: "Monitores",
+  servidores: "Servidores",
   accesorios: "Accesorios"
 };
 
 const ICONOS_CATEGORIA = {
   laptops:
     '<svg viewBox="0 0 24 24" fill="none" stroke="#0B2E59" stroke-width="1.5"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20" stroke="#00B8D9" stroke-width="2" stroke-linecap="round"/></svg>',
-  escritorio:
+  computadoras:
     '<svg viewBox="0 0 24 24" fill="none" stroke="#0B2E59" stroke-width="1.5"><rect x="7" y="3" width="10" height="18" rx="1.5"/><circle cx="12" cy="17" r="1.2" fill="#00B8D9" stroke="none"/><path d="M10 6.5h4M10 9.5h4" stroke="#00B8D9"/></svg>',
+  "all-in-one":
+    '<svg viewBox="0 0 24 24" fill="none" stroke="#0B2E59" stroke-width="1.5"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M9 20h6M12 16v4" stroke="#00B8D9" stroke-width="2" stroke-linecap="round"/></svg>',
+  servidores:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="#0B2E59" stroke-width="1.5"><rect x="4" y="3" width="16" height="7" rx="1.5"/><rect x="4" y="14" width="16" height="7" rx="1.5"/><circle cx="8" cy="6.5" r="1" fill="#00B8D9" stroke="none"/><circle cx="8" cy="17.5" r="1" fill="#00B8D9" stroke="none"/></svg>',
   monitores:
     '<svg viewBox="0 0 24 24" fill="none" stroke="#0B2E59" stroke-width="1.5"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M9 20h6M12 16v4" stroke="#00B8D9" stroke-width="2" stroke-linecap="round"/></svg>',
   accesorios:
@@ -24,6 +30,7 @@ const ICONOS_CATEGORIA = {
 };
 
 function formatearPrecio(n) {
+  if (!n || n <= 0) return "Consultar precio";
   return "$" + n.toLocaleString("es-MX") + " MXN";
 }
 
@@ -48,8 +55,10 @@ function renderizarProductos(filtro) {
         ? '<img src="' + p.imagen + '" alt="' + p.nombre + '" loading="lazy">'
         : ICONOS_CATEGORIA[p.categoria] || ICONOS_CATEGORIA.accesorios;
       const mensaje =
-        "Hola, me interesa: " + p.nombre + " (" + formatearPrecio(p.precio) +
-        "). ¿Está disponible?";
+        p.precio > 0
+          ? "Hola, me interesa: " + p.nombre + " (" + formatearPrecio(p.precio) +
+            "). ¿Está disponible?"
+          : "Hola, me interesa: " + p.nombre + ". ¿Cuál es el precio y está disponible?";
       return (
         '<article class="producto">' +
         '<div class="producto__media">' + media +
