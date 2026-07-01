@@ -67,9 +67,10 @@ a { color: var(--cian-oscuro); }
 }
 
 .logo__icono {
-  width: 42px;
-  height: 42px;
+  width: 46px;
+  height: 46px;
   flex-shrink: 0;
+  object-fit: contain;
 }
 
 .logo__texto {

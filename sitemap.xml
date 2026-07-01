@@ -30,4 +30,6 @@
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
+  <!-- POSTS-PANEL:INICIO (no editar a mano: lo administra /adminPC/blog) -->
+  <!-- POSTS-PANEL:FIN -->
 </urlset>

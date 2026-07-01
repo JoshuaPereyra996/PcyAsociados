@@ -4,17 +4,31 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Static marketing/catalog site for **PC y Asociados** — sale of new and used computer equipment in Coyoacán, CDMX. Plain HTML + CSS + vanilla JavaScript, **no framework, no build step, no package manager, no tests**. All user-facing copy is in Spanish (`es-MX`) and should stay in Spanish.
+Marketing/catalog site for **PC y Asociados** — sale of new and used computer equipment in Coyoacán, CDMX. The **public site** is plain HTML + CSS + vanilla JavaScript (no framework, no build step, no tests). A small **Node/Express backend** (`server.js`) serves that site and adds an admin panel at `/adminPC` where the client manages the catalog and the blog. All user-facing copy is in Spanish (`es-MX`) and should stay in Spanish.
 
 ## Running locally
 
-No build. Open `index.html` directly, or serve the folder:
+There is now a backend, so **do not use `python3 -m http.server`** (it doesn't know the `/adminPC` routes — they 404). Run:
 
 ```bash
-python3 -m http.server 8080   # then visit http://localhost:8080
+npm install        # once
+npm start          # node server.js → http://localhost:8080
 ```
 
-Deployment is static hosting (Netlify / Vercel / Cloudflare Pages / GitHub Pages) — just publish the repo root.
+- Public site: http://localhost:8080
+- Admin panel: http://localhost:8080/adminPC
+
+Because of the backend, deployment now needs a **Node host** (Render / Railway / a VPS), not pure static hosting — the panel writes files (`js/productos.js`, `img/productos/`, generated `blog-*.html`) at runtime, which static hosts can't do.
+
+## Admin panel (`/adminPC`)
+
+Defined entirely in `server.js`; protected pages live in `admin-views/` (blocked from static serving). Shared admin styles in `css/admin.css`.
+
+- **Auth:** one shared password (`ADMIN_PASSWORD` constant / env var in `server.js`), validated server-side; never sent to the browser. Session via `express-session` cookie (8 h). `requiereLogin` middleware guards admin pages and `/api/*`.
+- **Products CRUD** (`/adminPC/productos`, `js/admin-productos.js`): reads/writes the `PRODUCTOS` array in `js/productos.js` (loaded by evaluating the file, rewritten as JSON preserving `PROMOCIONES`). Each product gets a numeric `id`. Image uploads (`multer`) go to `img/productos/` and the path is stored in the JSON.
+- **Blog CRUD** (`/adminPC/blog`, `js/admin-blog.js`): simple fields → generates `blog-<slug>.html` from the site template, and updates the card block in `blog.html` and the URL block in `sitemap.xml` (both delimited by `<!-- POSTS-PANEL:INICIO/FIN -->` markers — never edit inside those by hand). Panel posts are tracked in `blog-posts.json`; the 3 original hand-authored articles live outside the markers and are not managed by the panel. Cover images go to `img/blog/`.
+
+Tests on the catalog/blog files should back up and restore them, since saving rewrites real content.
 
 ## Architecture
 

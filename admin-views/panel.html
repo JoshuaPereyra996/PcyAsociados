@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel · PC y Asociados</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body class="admin-body">
+
+  <header class="admin-topbar">
+    <div class="contenedor admin-topbar__inner">
+      <a class="logo" href="/adminPC/panel" aria-label="Panel PC y Asociados">
+        <img class="logo__icono" src="/img/LogoPcYasociados.png" alt="PC y Asociados" width="46" height="46">
+        <span class="logo__texto">PC Y ASOCIADOS<span>Panel de administración</span></span>
+      </a>
+      <div class="admin-topbar__acciones">
+        <a class="admin-link" href="/" target="_blank" rel="noopener">Ver sitio ↗</a>
+        <button class="admin-logout" id="btn-salir">Cerrar sesión</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <div class="contenedor">
+      <div class="admin-titulo">
+        <h1>Bienvenido</h1>
+        <p>Desde aquí podrá administrar el catálogo y el blog del sitio.</p>
+      </div>
+
+      <div class="admin-cards">
+        <a class="admin-card" href="/adminPC/productos">
+          <span class="admin-card__icono">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0B2E59" stroke-width="1.6"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20" stroke="#00B8D9" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          <h3>Productos</h3>
+          <p>Agregar, editar y ocultar productos del catálogo. Subir fotos de cada equipo.</p>
+        </a>
+
+        <a class="admin-card" href="/adminPC/blog">
+          <span class="admin-card__icono">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0B2E59" stroke-width="1.6"><path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h8M8 16h5" stroke="#00B8D9" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </span>
+          <h3>Blog</h3>
+          <p>Escribir y publicar nuevos artículos del blog con un formulario sencillo.</p>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById("btn-salir").addEventListener("click", async () => {
+      try {
+        const resp = await fetch("/adminPC/logout", { method: "POST" });
+        const data = await resp.json();
+        window.location.href = data.redirect || "/adminPC";
+      } catch (err) {
+        window.location.href = "/adminPC";
+      }
+    });
+  </script>
+</body>
+</html>

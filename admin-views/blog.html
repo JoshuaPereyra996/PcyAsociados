@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog · PC y Asociados</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body class="admin-body">
+
+  <header class="admin-topbar">
+    <div class="contenedor admin-topbar__inner">
+      <a class="logo" href="/adminPC/panel" aria-label="Panel PC y Asociados">
+        <img class="logo__icono" src="/img/LogoPcYasociados.png" alt="PC y Asociados" width="46" height="46">
+        <span class="logo__texto">PC Y ASOCIADOS<span>Blog</span></span>
+      </a>
+      <div class="admin-topbar__acciones">
+        <a class="admin-link" href="/adminPC/panel">← Panel</a>
+        <a class="admin-link" href="/blog.html" target="_blank" rel="noopener">Ver blog ↗</a>
+        <button class="admin-logout" id="btn-salir">Cerrar sesión</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <div class="contenedor">
+      <div class="admin-titulo">
+        <h1>Artículos del blog</h1>
+        <p>Escriba un artículo nuevo. Se publica con el diseño del sitio y aparece en la página del blog.</p>
+      </div>
+
+      <div class="crud-layout">
+
+        <!-- ===== Formulario ===== -->
+        <section class="crud-form">
+          <form id="form-blog" autocomplete="off">
+            <input type="hidden" id="blog-slug" name="slug">
+            <input type="hidden" id="blog-quitarImagen" name="quitarImagen" value="false">
+
+            <h2 class="crud-form__titulo" id="form-titulo">Nuevo artículo</h2>
+
+            <div class="campo">
+              <label for="blog-titulo">Título</label>
+              <input type="text" id="blog-titulo" name="titulo" required maxlength="140"
+                     placeholder="Ej. Cómo cuidar la batería de tu laptop">
+            </div>
+
+            <div class="campo-fila">
+              <div class="campo">
+                <label for="blog-fecha">Fecha (texto)</label>
+                <input type="text" id="blog-fecha" name="fecha" maxlength="40"
+                       placeholder="Ej. Junio 2026">
+              </div>
+              <div class="campo">
+                <label for="blog-etiqueta">Etiqueta (opcional)</label>
+                <input type="text" id="blog-etiqueta" name="etiqueta" maxlength="40"
+                       placeholder="Ej. Consejos">
+              </div>
+            </div>
+
+            <div class="campo">
+              <label for="blog-resumen">Resumen</label>
+              <textarea id="blog-resumen" name="resumen" rows="2" maxlength="300"
+                        placeholder="Frase corta que aparece en la tarjeta del blog."></textarea>
+            </div>
+
+            <div class="campo">
+              <label for="blog-portada">Imagen de portada (opcional)</label>
+              <input type="file" id="blog-portada" name="portada" accept="image/*">
+              <span class="campo-ayuda">Se muestra al inicio del artículo.</span>
+              <div class="crud-preview" id="preview-zona" hidden>
+                <img id="preview-img" alt="Vista previa">
+                <button type="button" class="mini-btn mini-btn--peligro" id="btn-quitar-img"
+                        style="margin-top:.5rem">Quitar imagen</button>
+              </div>
+            </div>
+
+            <div class="campo">
+              <label for="blog-cuerpo">Contenido</label>
+              <textarea id="blog-cuerpo" name="cuerpo" rows="12" required
+                        placeholder="Escriba aquí el artículo.&#10;&#10;Deje una línea en blanco entre párrafo y párrafo para separarlos."></textarea>
+              <span class="campo-ayuda">Cada bloque separado por una línea en blanco se convierte en un párrafo.</span>
+            </div>
+
+            <div class="admin-mensaje" id="form-mensaje" role="alert"></div>
+
+            <div class="crud-form__botones">
+              <button type="submit" class="admin-btn" id="btn-guardar">Publicar artículo</button>
+              <button type="button" class="admin-btn admin-btn--ghost" id="btn-nuevo">Limpiar / Nuevo</button>
+            </div>
+          </form>
+        </section>
+
+        <!-- ===== Listado ===== -->
+        <section class="crud-lista">
+          <div class="crud-lista__cabeza">
+            <h2>Artículos publicados (<span id="conteo">0</span>)</h2>
+          </div>
+          <div id="lista-blog" class="lista-productos">
+            <p class="lista-vacia" id="lista-cargando">Cargando…</p>
+          </div>
+          <p class="campo-ayuda" style="margin-top:1rem">
+            Nota: los 3 artículos originales del sitio no aparecen aquí; son parte fija del sitio.
+            Esta lista muestra los artículos creados desde el panel.
+          </p>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/admin-blog.js"></script>
+  <script>
+    document.getElementById("btn-salir").addEventListener("click", async () => {
+      try {
+        const resp = await fetch("/adminPC/logout", { method: "POST" });
+        const data = await resp.json();
+        window.location.href = data.redirect || "/adminPC";
+      } catch (err) { window.location.href = "/adminPC"; }
+    });
+  </script>
+</body>
+</html>

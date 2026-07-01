@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acceso · Panel PC y Asociados</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body class="admin-body">
+
+  <main class="login-pantalla">
+    <form class="login-card" id="form-login" autocomplete="off">
+      <img class="login-card__logo" src="/img/LogoPcYasociados.png" alt="PC y Asociados">
+      <h1>Panel de administración</h1>
+      <p class="login-card__sub">Acceso exclusivo para PC y Asociados</p>
+
+      <div class="campo">
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" name="password" required autofocus>
+      </div>
+
+      <div class="admin-mensaje admin-mensaje--error" id="mensaje" role="alert"></div>
+
+      <button type="submit" class="admin-btn" id="btn-entrar">Entrar</button>
+
+      <a class="login-card__volver" href="/">← Volver al sitio</a>
+    </form>
+  </main>
+
+  <script>
+    const form = document.getElementById("form-login");
+    const mensaje = document.getElementById("mensaje");
+    const btn = document.getElementById("btn-entrar");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      mensaje.textContent = "";
+      btn.disabled = true;
+      btn.textContent = "Entrando…";
+      try {
+        const resp = await fetch("/adminPC/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ password: document.getElementById("password").value })
+        });
+        const data = await resp.json();
+        if (data.ok) {
+          window.location.href = data.redirect;
+          return;
+        }
+        mensaje.textContent = data.error || "No se pudo iniciar sesión.";
+      } catch (err) {
+        mensaje.textContent = "Error de conexión con el servidor.";
+      }
+      btn.disabled = false;
+      btn.textContent = "Entrar";
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productos · PC y Asociados</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body class="admin-body">
+
+  <header class="admin-topbar">
+    <div class="contenedor admin-topbar__inner">
+      <a class="logo" href="/adminPC/panel" aria-label="Panel PC y Asociados">
+        <img class="logo__icono" src="/img/LogoPcYasociados.png" alt="PC y Asociados" width="46" height="46">
+        <span class="logo__texto">PC Y ASOCIADOS<span>Productos</span></span>
+      </a>
+      <div class="admin-topbar__acciones">
+        <a class="admin-link" href="/adminPC/panel">← Panel</a>
+        <a class="admin-link" href="/" target="_blank" rel="noopener">Ver sitio ↗</a>
+        <button class="admin-logout" id="btn-salir">Cerrar sesión</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <div class="contenedor">
+      <div class="admin-titulo">
+        <h1>Catálogo de productos</h1>
+        <p>Agregue, edite u oculte productos. Los cambios se guardan en el catálogo del sitio.</p>
+      </div>
+
+      <div class="crud-layout">
+
+        <!-- ===== Formulario ===== -->
+        <section class="crud-form">
+          <form id="form-producto" autocomplete="off">
+            <input type="hidden" id="prod-id" name="id">
+            <input type="hidden" id="prod-imagenActual" name="imagenActual">
+
+            <h2 class="crud-form__titulo" id="form-titulo">Nuevo producto</h2>
+
+            <div class="campo">
+              <label for="prod-categoria">Categoría</label>
+              <select id="prod-categoria" name="categoria" required>
+                <option value="computadoras">Computadoras</option>
+                <option value="laptops">Laptops</option>
+                <option value="all-in-one">All in One</option>
+                <option value="monitores">Monitores</option>
+                <option value="servidores">Servidores</option>
+                <option value="accesorios">Accesorios</option>
+              </select>
+            </div>
+
+            <div class="campo">
+              <label for="prod-nombre">Nombre</label>
+              <input type="text" id="prod-nombre" name="nombre" required maxlength="120"
+                     placeholder="Ej. Laptop Lenovo L14">
+            </div>
+
+            <div class="campo">
+              <label for="prod-descripcion">Descripción</label>
+              <textarea id="prod-descripcion" name="descripcion" rows="3" maxlength="400"
+                        placeholder="Procesador, RAM, almacenamiento, pantalla…"></textarea>
+            </div>
+
+            <div class="campo-fila">
+              <div class="campo">
+                <label for="prod-precio">Precio (MXN)</label>
+                <input type="number" id="prod-precio" name="precio" min="0" step="1" value="0">
+                <span class="campo-ayuda">0 = "Consultar precio"</span>
+              </div>
+              <div class="campo">
+                <label for="prod-condicion">Condición</label>
+                <select id="prod-condicion" name="condicion">
+                  <option value="Nuevo">Nuevo</option>
+                  <option value="Seminuevo" selected>Seminuevo</option>
+                  <option value="Usado">Usado</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="campo">
+              <label for="prod-imagen">Imagen del producto</label>
+              <input type="file" id="prod-imagen" name="imagen" accept="image/*">
+              <span class="campo-ayuda">Si no sube ninguna, se usa el ícono de la categoría.</span>
+              <div class="crud-preview" id="preview-zona" hidden>
+                <img id="preview-img" alt="Vista previa">
+              </div>
+            </div>
+
+            <div class="campo-checks">
+              <label class="check"><input type="checkbox" id="prod-disponible" name="disponible" checked> Disponible (visible en el sitio)</label>
+              <label class="check"><input type="checkbox" id="prod-destacado" name="destacado"> Destacado (aparece primero)</label>
+            </div>
+
+            <div class="admin-mensaje" id="form-mensaje" role="alert"></div>
+
+            <div class="crud-form__botones">
+              <button type="submit" class="admin-btn" id="btn-guardar">Guardar producto</button>
+              <button type="button" class="admin-btn admin-btn--ghost" id="btn-nuevo">Limpiar / Nuevo</button>
+            </div>
+          </form>
+        </section>
+
+        <!-- ===== Listado ===== -->
+        <section class="crud-lista">
+          <div class="crud-lista__cabeza">
+            <h2>Productos actuales (<span id="conteo">0</span>)</h2>
+          </div>
+          <div id="lista-productos" class="lista-productos">
+            <p class="lista-vacia" id="lista-cargando">Cargando…</p>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/admin-productos.js"></script>
+  <script>
+    document.getElementById("btn-salir").addEventListener("click", async () => {
+      try {
+        const resp = await fetch("/adminPC/logout", { method: "POST" });
+        const data = await resp.json();
+        window.location.href = data.redirect || "/adminPC";
+      } catch (err) { window.location.href = "/adminPC"; }
+    });
+  </script>
+</body>
+</html>
