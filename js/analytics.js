@@ -17,7 +17,7 @@
       de index.html, reemplace el contenido por su código.
    ============================================================ */
 
-const GA_ID = "G-XXXXXXXXXX";        // ← Reemplazar con el ID real de GA4
+const GA_ID = "G-60C869WE8G";        // ← Reemplazar con el ID real de GA4
 const META_PIXEL_ID = "000000000000000"; // ← Reemplazar con el ID real del píxel
 
 let seguimientoActivo = false;
