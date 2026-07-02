@@ -39,7 +39,7 @@ Fondo degradado azul marino con círculo cian decorativo.
 | 2.2 | Título H1 | "¿Buscas el mejor equipo a un excelente precio? Ya no busques más." (frase promocional del cuestionario) | ☐ | ☐ | ☐ | |
 | 2.3 | Subtítulo / párrafo | Descripción: laptops, escritorio, monitores y accesorios, revisados al 100%, garantía 3 meses, envíos nacionales | ☐ | ☐ | ☐ | |
 | 2.4 | Botón primario | Botón cian "Ver catálogo" (scroll al catálogo) | ☐ | ☐ | ☐ | |
-| 2.5 | Botón de WhatsApp | Botón verde "Cotizar por WhatsApp" con ícono (abre chat al 55 7407 3349 con mensaje prellenado) | ☐ | ☐ | ☐ | |
+| 2.5 | Botón de WhatsApp | Botón verde "Cotizar por WhatsApp" con ícono (abre chat al 55 4932 9345 con mensaje prellenado) | ☐ | ☐ | ☐ | |
 | 2.6 | Tarjeta lateral de beneficios | "Por qué comprar con nosotros": 5 puntos con palomitas (revisados 100%, garantía, envíos, facturación/meses, soporte). *Se oculta en móvil* | ☐ | ☐ | ☐ | |
 
 **Qué se puede cambiar aquí:** textos, frase principal, qué botones aparecen y a dónde llevan, los 5 puntos de la tarjeta, agregar foto o video de fondo.
@@ -155,7 +155,7 @@ Fondo gris claro, dos columnas: datos de contacto + formulario. Mapa abajo a lo 
 |---|----------|------------------|----|----|----|---------------|
 | 9.1 | Card "Dirección" | Privada Vicente García Torres #6, Col. San Lucas, Coyoacán, CP 04030, CDMX | ☐ | ☐ | ☐ | |
 | 9.2 | Card "Horario" | Lunes a viernes, 9:00 am – 6:00 pm · Sábados, 9:00 am – 2:00 pm | ☐ | ☐ | ☐ | |
-| 9.3 | Card "Teléfono y WhatsApp" | 55 7407 3349 (enlace a WhatsApp con mensaje prellenado) | ☐ | ☐ | ☐ | |
+| 9.3 | Card "Teléfono y WhatsApp" | 55 4932 9345 (enlace a WhatsApp con mensaje prellenado) | ☐ | ☐ | ☐ | |
 | 9.4 | Card "Correo" | pcyasociados040508@gmail.com (enlace mailto) | ☐ | ☐ | ☐ | |
 | 9.5 | Formulario de cotización | Campos: Nombre*, Teléfono*, ¿Qué te interesa?* (select con 6 opciones), Mensaje | ☐ | ☐ | ☐ | |
 | 9.6 | Botón submit del formulario | Botón azul "Enviar por WhatsApp" — arma el mensaje y abre el chat (no envía correo) | ☐ | ☐ | ☐ | |
@@ -187,7 +187,7 @@ Fondo azul marino, 4 columnas + línea inferior de derechos.
 
 | # | Elemento | Contenido actual | ✅ | ❌ | ✏️ | ¿Qué cambiar? |
 |---|----------|------------------|----|----|----|---------------|
-| 11.1 | Botón circular verde con logo de WhatsApp | Fijo en pantalla; abre chat al 55 7407 3349 con mensaje "Hola, vi su página web…" | ☐ | ☐ | ☐ | |
+| 11.1 | Botón circular verde con logo de WhatsApp | Fijo en pantalla; abre chat al 55 4932 9345 con mensaje "Hola, vi su página web…" | ☐ | ☐ | ☐ | |
 
 **Qué se puede cambiar aquí:** número al que llega, mensaje prellenado, posición (izquierda/derecha), tamaño, agregar texto junto al botón.
 

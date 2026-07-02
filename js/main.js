@@ -3,7 +3,7 @@
    ============================================================ */
 
 // Número principal de WhatsApp (formato internacional, sin "+")
-const WHATSAPP = "525574073349";
+const WHATSAPP = "525549329345";
 
 const NOMBRES_CATEGORIA = {
   computadoras: "Computadoras",
