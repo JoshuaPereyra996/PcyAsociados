@@ -156,7 +156,7 @@ Fondo gris claro, dos columnas: datos de contacto + formulario. Mapa abajo a lo 
 | 9.1 | Card "Dirección" | Privada Vicente García Torres #6, Col. San Lucas, Coyoacán, CP 04030, CDMX | ☐ | ☐ | ☐ | |
 | 9.2 | Card "Horario" | Lunes a viernes, 9:00 am – 6:00 pm · Sábados, 9:00 am – 2:00 pm | ☐ | ☐ | ☐ | |
 | 9.3 | Card "Teléfono y WhatsApp" | 55 4932 9345 (enlace a WhatsApp con mensaje prellenado) | ☐ | ☐ | ☐ | |
-| 9.4 | Card "Correo" | pcyasociados040508@gmail.com (enlace mailto) | ☐ | ☐ | ☐ | |
+| 9.4 | Card "Correo" | contacto-ventas@pcyasociados.com (enlace mailto) | ☐ | ☐ | ☐ | |
 | 9.5 | Formulario de cotización | Campos: Nombre*, Teléfono*, ¿Qué te interesa?* (select con 6 opciones), Mensaje | ☐ | ☐ | ☐ | |
 | 9.6 | Botón submit del formulario | Botón azul "Enviar por WhatsApp" — arma el mensaje y abre el chat (no envía correo) | ☐ | ☐ | ☐ | |
 | 9.7 | Mapa embebido (iframe Google Maps) | Ubicación de la dirección de Coyoacán, 380 px de alto | ☐ | ☐ | ☐ | |
